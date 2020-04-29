@@ -24,7 +24,8 @@ df = df[df.response != 'Banking']
 df["itemID"] = df["itemID"].astype(str)
 df["item"] = df["itemID"].map(items_dict) # turning the item column, which contains itemID, into item name
 
-df = df[~df.item.str.contains("Pattern|Formula|Recipe|Schematic|Plans|Tranquilizing")] # removing crafting pattersn and tome of tranq
+# Removing crafting pattersn and tome of tranquilizing shot. Adjust the string below to include/exclude additional items.
+df = df[~df.item.str.contains("Pattern|Formula|Recipe|Schematic|Plans|Tranquilizing")] 
 
 df.drop(["time", "itemString", "votes", "boss", "isAwardReason", "subType", "equipLoc", "note", "owner", "itemID"], axis=1, inplace=True)
 
